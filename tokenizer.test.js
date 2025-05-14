@@ -3,8 +3,8 @@ import { assertEquals, fail } from "jsr:@std/assert";
 
 const atom = (name) => Symbol.for(name);
 
-Deno.test("Tokenizer", async (t) => {
-  await t.step({
+Deno.test("Tokenizer", async (t) => {   
+  await t.step({   
     name: "no input is an empty list",
     fn: () => {
       const result = tokenize("");
@@ -12,7 +12,7 @@ Deno.test("Tokenizer", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({   
     name: "tokenize a number",
     fn: () => {
       const result = tokenize("12.3");
@@ -20,7 +20,7 @@ Deno.test("Tokenizer", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({  
     name: "tokenize a symbol",
     fn: () => {
       const result = tokenize("fifa");
@@ -28,7 +28,7 @@ Deno.test("Tokenizer", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({  
     name: "regard spaces as delimiters",
     fn: () => {
       const result = tokenize("fifa 2002");
@@ -36,7 +36,7 @@ Deno.test("Tokenizer", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({  
     name: "tokenize Shvi code",
     fn: () => {
       const result = tokenize("tone 261.63 1000");

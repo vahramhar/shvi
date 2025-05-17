@@ -68,15 +68,16 @@ const atom = (name) => Symbol.for(name);
 
 const tokenize = (input) => {
   const token = [];
+  const arr = [];
   token.push(input.split(" "));
   for (let i = 0; i <= token.length; i++) {
-    if (token[i] == String) {
-      Symbol.for(token[i]);
-    }
-    if (token[i] == Array) {
-      Array.from(token[i]);
+    if (!isNaN(Number(token[i]))) {
+      arr.push(Number(token[i]));
+    } else {
+      arr.push(atom(token[i]));
     }
   }
+  return arr;
 };
 
-// isNan(Number(input))
+// isNaN(Number(input))

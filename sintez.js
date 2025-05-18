@@ -67,10 +67,13 @@ async function encodeWAV(
 const atom = (name) => Symbol.for(name);
 
 const tokenize = (input) => {
-  const token = [];
+  if (input === ""){
+    return [];
+  }
   const arr = [];
-  token.push(input.split(" "));
-  for (let i = 0; i <= token.length; i++) {
+  const token = input.split(" ");
+  console.log({token})
+  for (let i = 0; i < token.length; i++) {
     if (!isNaN(Number(token[i]))) {
       arr.push(Number(token[i]));
     } else {
@@ -79,5 +82,3 @@ const tokenize = (input) => {
   }
   return arr;
 };
-
-// isNaN(Number(input))

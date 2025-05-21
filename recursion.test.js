@@ -1,6 +1,6 @@
 import { assertEquals, fail } from "jsr:@std/assert";
 
-Deno.test("Recursion", async (t) => {
+Deno.test("Recursion", async (t) => { 
   await t.step({
     name: "find the nth Fibonacci number",
     fn: () => {
@@ -27,7 +27,7 @@ Deno.test("Recursion", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({ 
     name: "reverse capitalize a string",
     fn: () => {
       // If the string is empty, return an empty string
@@ -43,10 +43,13 @@ Deno.test("Recursion", async (t) => {
           if (str.length === 0) {
             return acc;
           }
+
           const [first, ...rest] = str;
 
-          if (str.length > 0) {
-            return loop(rest, acc + first);
+          if (first === first.toLowerCase()) {
+            return loop(rest, acc + first.toUpperCase()); 
+          }else {
+            return loop(rest, acc + first.toLowerCase())
           }
         };
 
@@ -60,7 +63,7 @@ Deno.test("Recursion", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({ 
     name: "find the maximum value in a list",
     fn: () => {
       // If the list is empty, return -Infinity
@@ -70,7 +73,21 @@ Deno.test("Recursion", async (t) => {
       // When all the elements are checked, return the maximum value
 
       const max = (numbers) => {
-        throw new Error("Not implemented");
+        loop = (numbers, Max) => {
+        if (numbers.length === 0){
+          return numbers
+        }
+        const [first, ...rest] = numbers;
+        //  loop(rest, first)
+        h = first
+        Max = h;
+        for (let i = 0; i < numbers.length; i++){
+          if (numbers[i] > h){
+            h = numbers[i]
+          }
+        }
+      }
+      return numbers
       };
 
       const maxOfEmptyList = max([]);
@@ -83,7 +100,7 @@ Deno.test("Recursion", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({ 
     name: "remove substrings from a string",
     fn: () => {
       // If the substring or the string are empty, return the string
@@ -108,7 +125,7 @@ Deno.test("Recursion", async (t) => {
     },
   });
 
-  await t.step({
+  await t.step({ 
     name: "flatten a nested array",
     fn: () => {
       // If the array is empty, return an empty array
